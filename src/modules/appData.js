@@ -1,10 +1,13 @@
+import Project from "./project";
+
 const AppData = (() => {
     return {
         saveProjects(projects) {
             localStorage.setItem('projects', JSON.stringify(projects));
         },
         loadProjects() {
-            return JSON.parse(localStorage.getItem('projects'));
+            const unconverted = JSON.parse(localStorage.getItem('projects'));
+            return unconverted.map(project => Project(project.name, project.todoList));
         }
     }
 })();
