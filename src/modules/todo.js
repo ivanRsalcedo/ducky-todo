@@ -1,12 +1,12 @@
-const Todo = (title, notes = '', date = '', time = '', priority = '') => {
+const Todo = (name, notes = '', date = '', time = '', priority = '') => {
     return {
-        title,
+        name,
         notes,
         date,
         time,
         priority,
-        completed: false
-    };
+        id: crypto.randomUUID()
+    }
 };
 
 export default Todo;
