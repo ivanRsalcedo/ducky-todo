@@ -1,3 +1,12 @@
+:root {
+    --color-bg: #fff0b1;
+    --color-text: #7a403a;
+    --color-accent: #cb8400;
+    --color-accent-hover: orange;
+    --color-block-bg: rgba(255, 255, 255, 0.8);
+    --color-green: #70c16d;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,8 +15,80 @@
 
 body {
     font-family: 'Nunito', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
-h1 {
-    font-size: 3rem;
+.container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    height: 90vh;
+    gap: 50px;
+    padding: 20px;
+}
+
+#sidebar,
+#todo-page {
+    border-radius: 50px;
+}
+
+#sidebar {
+    background-color: var(--color-block-bg);
+    padding-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+#sidebar button {
+    border: none;
+    font-size: 1.5rem;
+    background: none;
+    color: var(--color-accent);
+}
+
+#sidebar h1 {
+    font-size: 2.5rem;
+}
+
+#todo-page {
+    background-color: var(--color-block-bg);
+}
+
+#todo-page h1 {
+    font-size: 6rem;
+    padding: 3rem;
+}
+
+#btn-add-todo {
+    position: absolute;
+    bottom: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    background-color: var(--color-green);
+    color: white;
+    font-size: 5rem;
+    border: none;
+    border-radius: 100%;
+    width: 150px;
+    aspect-ratio: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn-add-todo:hover {
+    transform: translateX(-50%) scale(1.05);
+}
+
+#btn-add-todo:active {
+    transform: translateX(-50%) scale(.95);
+}
+
+#btn-add-todo {
+    /* ... existing styles ... */
+    transition: transform 0.2s ease;
 }
