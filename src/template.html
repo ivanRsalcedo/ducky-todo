@@ -5,22 +5,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ducky Todo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;700;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
         <aside id="sidebar">
             <h1>Projects</h1>
-            <button class="btn-project">TODO</button>
-            <button class="btn-project">University</button>
-            <button class="btn-project">Work</button>
-            <button class="btn-project">Completed</button>
         </aside>
         <main id="todo-page">
             <h1 id="header-project">TODO</h1>
-            <div class="list">
-                
+            <div id="todo-list">
+
+                <details class="todo-item">
+                    <summary>
+                        <button class="btn-checkbox">
+                            <i class="fa-regular fa-square"></i>
+                        </button>
+                        <p class="todo-title">Do Homework</p>
+                        <div class="todo-date-time">
+                            <p class="todo-date">Jul 22</p>
+                            <p class="todo-time">5:18PM</p>
+                        </div>
+                    </summary>
+                    <div class="details">
+                        <textarea class="todo-notes">See page 53</textarea>
+                        <div class="todo-buttons">
+                            <input type="datetime-local" class="input-date-time">
+                            <button class="btn-remove-todo"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
+                    </div>
+                </details>
             </div>
         </main>
     </div>
