@@ -1,11 +1,10 @@
-import Project from "./project";
 import ProjectHandler from "./projectHandler";
 
 const DisplayController = (() => {
-    const sidebar = document.querySelector('#sidebar');
+    const navProjects = document.querySelector('#nav-projects');
     const todoList = document.querySelector('#todo-list');
 
-    function constructTodo(todo) {
+    function renderTodo(todo) {
         const details = document.createElement('details');
         details.classList.add('todo-item');
 
@@ -58,16 +57,39 @@ const DisplayController = (() => {
         return details;
     }
 
-    return {
-        update() {
-            todoList.innerHTML = '';
+    function renderTodoList() {
+        todoList.innerHTML = '';
+        const project = ProjectHandler.getActiveProject();
+        if (!project) return;
 
-            const list = ProjectHandler.getActiveProject().getList();
-            for (const todo of list) {
-                todoList.appendChild(constructTodo(todo));
-            }
+        const list = project.getList();
+        for (const todo of list) {
+            todoList.appendChild(renderTodo(todo));
         }
     }
+
+    function renderProjects() {
+        navProjects.innerHTML = '';
+
+        const projects = ProjectHandler.getProjects();
+        for (const project of projects) {
+            const btn = document.createElement('button');
+            btn.classList.add('project-btn');
+            btn.textContent = project.name;
+
+            btn.addEventListener('click', () => {
+                ProjectHandler.setActiveProject(project);
+                renderTodoList();
+            });
+
+            navProjects.appendChild(btn);
+        }
+    }
+
+    return {
+        renderTodoList,
+        renderProjects,
+    };
 })();
 
 export default DisplayController;
