@@ -6,4 +6,4 @@ import DisplayController from './modules/displayController.js';
 ProjectHandler.loadProjects();
 DisplayController.renderProjects();
 DisplayController.renderTodoList();
-DisplayController.initEventListeners();
+DisplayController.init();

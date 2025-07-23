@@ -6,7 +6,10 @@ const DisplayController = (() => {
     const navProjects = document.querySelector('#nav-projects');
     const todoList = document.querySelector('#todo-list');
 
-    function initEventListeners() {
+    function init() {
+
+        navProjects.querySelectorAll('button')[0]?.classList.add('active-project');
+
         const modal = document.querySelector('#modal-add-todo');
         const form = document.querySelector('#form-modal-add-todo');
 
@@ -103,15 +106,19 @@ const DisplayController = (() => {
 
             btn.addEventListener('click', () => {
                 ProjectHandler.setActiveProject(project);
+                navProjects.querySelectorAll('button').forEach(btnProj => {
+                    btnProj.classList.remove('active-project');
+                });
+                btn.classList.add('active-project');
+
                 renderTodoList();
             });
-
             navProjects.appendChild(btn);
         }
     }
 
     return {
-        initEventListeners,
+        init,
         renderTodoList,
         renderProjects,
     };

@@ -191,10 +191,6 @@ button {
     width: 100%;
 }
 
-#sidebar button:hover {
-    filter: brightness(150%) saturate(110%);
-}
-
 #sidebar h1 {
     font-size: 2rem;
 }
@@ -202,6 +198,14 @@ button {
 #nav-projects {
     display: flex;
     flex-direction: column;
+    width: 100%;
+}
+
+#sidebar .active-project {
+    background-color: var(--color-default);
+    color: var(--color-block-bg);
+    border-radius: 5px;
+    transform: scale(105%);
 }
 
 #todo-list {
