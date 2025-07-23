@@ -5,15 +5,66 @@ const DisplayController = (() => {
     const sidebar = document.querySelector('#sidebar');
     const todoList = document.querySelector('#todo-list');
 
+    function constructTodo(todo) {
+        const details = document.createElement('details');
+        details.classList.add('todo-item');
+
+        const summary = document.createElement('summary');
+
+        const checkbox = document.createElement('button');
+        checkbox.classList.add('btn-checkbox');
+        checkbox.innerHTML = '<i class="fa-regular fa-square"></i>';
+
+        const title = document.createElement('p');
+        title.classList.add('todo-title');
+        title.textContent = todo.title;
+
+        const dateTime = document.createElement('div');
+        dateTime.classList.add('todo-date-time');
+
+        const date = document.createElement('p');
+        date.classList.add('todo-date');
+        date.textContent = todo.date;
+
+        const time = document.createElement('p');
+        time.classList.add('todo-time');
+        time.textContent = todo.time;
+
+        dateTime.append(date, time);
+        summary.append(checkbox, title, dateTime);
+
+        const expanded = document.createElement('div');
+        expanded.classList.add('todo-expanded');
+
+        const notes = document.createElement('textarea');
+        notes.classList.add('todo-notes');
+        notes.value = todo.notes;
+
+        const buttonGroup = document.createElement('div');
+        buttonGroup.classList.add('todo-buttons');
+
+        const dateInput = document.createElement('input');
+        dateInput.type = 'datetime-local';
+        dateInput.classList.add('input-date-time');
+
+        const trash = document.createElement('button');
+        trash.classList.add('btn-remove-todo');
+        trash.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+
+        buttonGroup.append(dateInput, trash);
+        expanded.append(notes, buttonGroup);
+
+        details.append(summary, expanded);
+        return details;
+    }
+
     return {
         update() {
-            for (const todo of ProjectHandler.getActiveProject().getList()){
-                const todoEl = document.createElement('div');
-                todoEl.classList.add('todo-item')
+            todoList.innerHTML = '';
 
-                
-
-                todoList.appendChild(todoEl);
+            const list = ProjectHandler.getActiveProject().getList();
+            for (const todo of list) {
+                todoList.appendChild(constructTodo(todo));
             }
         }
     }
