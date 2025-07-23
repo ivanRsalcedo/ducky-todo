@@ -9,35 +9,40 @@
 </head>
 
 <body>
+    <dialog id="modal-add-todo">
+        <h1>Add Todo</h1>
+        <form id="form-modal-add-todo">
+            <div id="form-modal-add-todo-fields">
+                <input type="text" id="todo-title" placeholder="Title">
+
+            </div>
+            <div id="form-modal-add-todo-due">
+                <h3>Optional</h3>
+                <textarea type="text" id="todo-notes" placeholder="Notes"></textarea>
+                <input id="form-modal-add-todo-date-due" type="date">
+                <input id="form-modal-add-todo-time-due" type="time">
+                <select id="todo-priority">
+                    <option value="default">Priority</option>
+                    <option value="low">Low</option>
+                    <option value="normal">Mid</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div id="form-modal-buttons">
+                <button id="btn-form-add" type="submit"><i class="fa-solid fa-plus"></i></button>
+                <button id="btn-form-cancel" type="reset"><i class="fa-solid fa-ban"></i></button>
+            </div>
+        </form>
+    </dialog>
     <div class="container">
         <aside id="sidebar">
             <h1>Projects</h1>
             <div id="nav-projects"></div>
         </aside>
         <main id="todo-page">
+
             <h1 id="header-project">TODO</h1>
-            <div id="todo-list">
-                <!-- TEMPLATE ITEM FOR TODOS -->
-                <!-- <details class="todo-item">
-                    <summary>
-                        <button class="btn-checkbox">
-                            <i class="fa-regular fa-square"></i>
-                        </button>
-                        <p class="todo-title">Do Homework</p>
-                        <div class="todo-date-time">
-                            <p class="todo-date">Jul 22</p>
-                            <p class="todo-time">5:18PM</p>
-                        </div>
-                    </summary>
-                    <div class="todo-expanded">
-                        <textarea class="todo-notes">See page 53</textarea>
-                        <div class="todo-buttons">
-                            <input type="datetime-local" class="input-date-time">
-                            <button class="btn-remove-todo"><i class="fa-solid fa-trash-can"></i></button>
-                        </div>
-                    </div>
-                </details> -->
-            </div>
+            <div id="todo-list"></div>
         </main>
     </div>
     <button id="btn-add-todo">

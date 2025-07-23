@@ -3,8 +3,9 @@
     --color-text: #7a403a;
     --color-accent: #cb8400;
     --color-accent-hover: orange;
-    --color-block-bg: rgba(255, 255, 255, 0.8);
+    --color-block-bg: #fffafa;
     --color-green: #70c16d;
+    --color-blue: #7a9edc;
     --color-high: #cf4f4f;
     --color-normal: #cf984f;
     --color-low: #cfbc4f;
@@ -25,6 +26,113 @@ html {
     outline: none;
 }
 
+dialog {
+    margin: auto;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 45, 0, 0.3);
+    backdrop-filter: blur(2px);
+}
+
+#modal-add-todo {
+    background-color: var(--color-green);
+    color: var(--color-block-bg);
+    border: 5px solid var(--color-block-bg);
+    border-radius: 15px;
+    padding: 1rem;
+    font-size: 150%;
+    text-align: center;
+}
+
+#modal-add-todo label {
+    font-size: 1.2rem;
+}
+
+#todo-priority {
+    border: 2px solid var(--color-block-bg);
+    background: none;
+    color: var(--color-block-bg);
+    font-size: 1rem;
+    border-radius: 5px;
+    padding:  .3rem 1rem;
+    width: minmax(135, 50%);
+    align-self: center;
+}
+
+#modal-add-todo input[type='text'],
+#modal-add-todo textarea {
+    background: none;
+    border: 2px solid var(--color-block-bg);
+    border-radius: 10px;
+    color: var(--color-block-bg);
+    font-size: 1.4rem;
+    padding: .5rem 1rem;
+}
+
+#modal-add-todo textarea {
+    font-size: .9rem;
+}
+
+#todo-notes {
+    height: 150px;
+}
+
+#modal-add-todo input[type='text']::placeholder,
+#modal-add-todo textarea::placeholder {
+    color: var(--color-block-bg);
+}
+
+#modal-add-todo input[type='date'],
+#modal-add-todo input[type='time'] {
+    background: none;
+    border: none;
+    border-radius: 5px;
+    color: var(--color-block-bg);
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+#form-modal-add-todo {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#form-modal-add-todo-due h3 {
+    margin-bottom: 10px;
+}
+
+#form-modal-add-todo-fields {
+    display: flex;
+    flex-direction: column;
+}
+
+#form-modal-add-todo-due {
+    border: 2px solid var(--color-block-bg);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 15px;
+}
+
+#form-modal-buttons button {
+    border-radius: 100%;
+    border: 2px solid var(--color-block-bg);
+    font-size: 3rem;
+}
+
+
+#btn-form-add {
+    background-color: var(--color-blue);
+}
+
+#btn-form-cancel {
+    background-color: var(--color-high);
+}
 body {
     font-family: 'Nunito', sans-serif;
     background-color: var(--color-bg);
@@ -32,10 +140,13 @@ body {
 }
 
 button:hover,
+::-webkit-datetime-edit:hover,
+::-webkit-calendar-picker-indicator:hover,
 .input-date-time:hover {
     transform: scale(105%);
     cursor: pointer;
 }
+
 
 button:active,
 .input-date-time:active {
@@ -43,7 +154,7 @@ button:active,
 }
 
 button {
-    color: white;
+    color: var(--color-block-bg);
     border: none;
     background: none;
     padding: .5rem;
@@ -75,7 +186,7 @@ button {
     border: none;
     font-size: 1.5rem;
     /* background: var(--color-accent); */
-    /* color: white; */
+    /* color: var(--color-block-bg); */
     color: var(--color-text);
     width: 100%;
 }
@@ -139,7 +250,7 @@ button {
 .todo-item {
     background-color: var(--color-default);
     padding: 1rem;
-    color: white;
+    color: var(--color-block-bg);
 }
 
 
@@ -169,13 +280,13 @@ button {
 
 .btn-checkbox {
     background: none;
-    color: white;
+    color: var(--color-block-bg);
     border: none;
     font-size: 1.6rem;
 }
 
 .todo-notes {
-    border: 1px solid white;
+    border: 1px solid var(--color-block-bg);
     background-color: transparent;
     color: inherit;
     border-radius: 15px;
@@ -189,26 +300,26 @@ button {
 
 .input-date-time,
 .btn-remove-todo {
-    border: 1px solid white;
+    border: 1px solid var(--color-block-bg);
     border-radius: 10px;
     background-color: transparent;
     color: inherit;
     padding: .5rem;
 }
 
-.input-date-time::-webkit-calendar-picker-indicator {
-    filter: invert(1);
+
+::-webkit-calendar-picker-indicator {
     font-size: 1.5rem;
-    cursor: pointer;
+    filter: invert(1);
 }
 
 .input-date-time::-webkit-datetime-edit {
     display: none;
 }
-    
+
 .btn-remove-todo {
     font-size: 1.5rem;
-}   
+}
 
 .todo-expanded {
     display: flex;

@@ -1,8 +1,32 @@
 import ProjectHandler from "./projectHandler";
+import { format } from 'date-fns';
+
 
 const DisplayController = (() => {
     const navProjects = document.querySelector('#nav-projects');
     const todoList = document.querySelector('#todo-list');
+
+    function initEventListeners() {
+        const modal = document.querySelector('#modal-add-todo');
+        const form = document.querySelector('#form-modal-add-todo');
+
+        document.querySelector('#btn-add-todo').addEventListener('click', () => {
+            const now = new Date();
+            modal.showModal();
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+        });
+
+        document.querySelector('#btn-form-add').addEventListener('click', () => {
+            form.reset();
+            modal.close();
+        });
+        document.querySelector('#btn-form-cancel').addEventListener('click', () => {
+            modal.close();
+        });
+    }
 
     function renderTodo(todo) {
         const details = document.createElement('details');
@@ -87,6 +111,7 @@ const DisplayController = (() => {
     }
 
     return {
+        initEventListeners,
         renderTodoList,
         renderProjects,
     };
