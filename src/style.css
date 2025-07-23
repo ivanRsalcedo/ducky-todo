@@ -206,11 +206,13 @@ button {
     color: var(--color-block-bg);
     border-radius: 5px;
     transform: scale(105%);
+    filter: saturate(130%);
 }
 
 #todo-list {
     display: flex;
     flex-direction: column;
+    gap: .5rem;
 }
 
 #todo-page {
