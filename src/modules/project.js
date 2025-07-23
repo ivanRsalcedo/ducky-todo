@@ -1,6 +1,7 @@
 const Project = (name, todoList = []) => {
     return {
         name,
+        todoList,
         id: crypto.randomUUID(),
         addTodo(todo) {
             todoList.push(todo);

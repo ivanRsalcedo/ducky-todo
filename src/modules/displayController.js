@@ -16,7 +16,7 @@ const DisplayController = (() => {
 
         const title = document.createElement('p');
         title.classList.add('todo-title');
-        title.textContent = todo.title;
+        title.textContent = todo.name;
 
         const dateTime = document.createElement('div');
         dateTime.classList.add('todo-date-time');

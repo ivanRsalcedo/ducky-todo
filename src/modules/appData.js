@@ -1,6 +1,8 @@
 import Project from "./project";
+import Todo from "./todo";
 
 const AppData = (() => {
+
     return {
         saveProjects(projects) {
             localStorage.setItem('projects', JSON.stringify(projects));
@@ -9,25 +11,51 @@ const AppData = (() => {
             const unconverted = JSON.parse(localStorage.getItem('projects'));
 
             if (!unconverted || unconverted.length === 0) {
-                const generalProject = Project('General', []);
-                generalProject.addTodo({
-                    title: 'Create your first todo!',
-                    notes: 'Change date/time due or delete a todo with the buttons on the right.',
-                    date: '',
-                    time: '',
-                    priority: ''
-                });
-                this.saveProjects([generalProject]);
-                return [generalProject];
+                const defaultProjects = createDefaultProject();
+                AppData.saveProjects(defaultProjects);
+                return defaultProjects;
             }
 
-            return unconverted.map(project => {
-                const restored = Project(project.name, []);
-                project.todoList.forEach(todo => restored.addTodo(todo));
-                return restored;
-            });
+            return unconverted.map(rebuildProject);
         }
     }
+
+    function createDefaultProject() {
+        const general = Project('General', []);
+        general.addTodo(Todo(
+            'Create your first todo!',
+            'Change date/time due or delete a todo with the buttons on the right.',
+            '', '', ''
+        ));
+        general.addTodo(Todo(
+            'Try clicking a project on the left!',
+            'You can switch between projects or add a new one below.',
+            '', '', ''
+        ));
+
+        const work = Project('Work', []);
+        work.addTodo(Todo(
+            'Help Bob troubleshoot his PC',
+            'Bob probably just needs to restart the computer.',
+            '', '', ''
+        ));
+
+        return [general, work];
+    }
+
+    function rebuildProject(rawObject) {
+        const project = Project(rawObject.name, []);
+        project.id = rawObject.id;
+        rawObject.todoList.forEach(todo => {
+            const realTodo = Todo(
+                todo.name, todo.notes, todo.date, todo.time, todo.priority
+            );
+            realTodo.id = todo.id;
+            project.addTodo(realTodo);
+        });
+        return project;
+    }
+
 })();
 
 export default AppData;

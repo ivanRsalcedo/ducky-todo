@@ -23,6 +23,9 @@ const ProjectHandler = (() => {
         },
         getActiveProject() {
             return activeProject;
+        },
+        setActiveProject(project) {
+            activeProject = project;
         }
     }
 })();
