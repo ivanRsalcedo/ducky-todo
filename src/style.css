@@ -255,7 +255,7 @@ button {
 }
 
 .todo-item {
-    /* background-color: var(--color-default); */
+    background-color: var(--color-default);
     padding: 1rem;
     color: var(--color-block-bg);
 }
