@@ -1,4 +1,4 @@
-const Todo = (name, notes = '', date = '', time = '', priority = '') => {
+const Todo = (name, notes = '', date = '', time = '', priority = 'default') => {
     return {
         name,
         notes,

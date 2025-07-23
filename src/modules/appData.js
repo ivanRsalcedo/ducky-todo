@@ -25,19 +25,19 @@ const AppData = (() => {
         general.addTodo(Todo(
             'Create your first todo!',
             'Change date/time due or delete a todo with the buttons on the right.',
-            '', '', ''
+            '', '', 'mid'
         ));
         general.addTodo(Todo(
             'Try clicking a project on the left!',
             'You can switch between projects or add a new one below.',
-            '', '', ''
+            '', '', 'low'
         ));
 
         const work = Project('Work', []);
         work.addTodo(Todo(
             'Help Bob troubleshoot his PC',
             'Bob probably just needs to restart the computer.',
-            '', '', ''
+            '', '', 'high'
         ));
 
         return [general, work];

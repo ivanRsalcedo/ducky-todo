@@ -34,6 +34,7 @@ const DisplayController = (() => {
     function renderTodo(todo) {
         const details = document.createElement('details');
         details.classList.add('todo-item');
+        details.classList.add(`pr-${todo.priority}`);
 
         const summary = document.createElement('summary');
 

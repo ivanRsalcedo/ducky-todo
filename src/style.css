@@ -7,7 +7,7 @@
     --color-green: #70c16d;
     --color-blue: #7a9edc;
     --color-high: #cf4f4f;
-    --color-normal: #cf984f;
+    --color-mid: #cf984f;
     --color-low: #cfbc4f;
     --color-default: #a58559;
 }
@@ -55,7 +55,7 @@ dialog::backdrop {
     color: var(--color-block-bg);
     font-size: 1rem;
     border-radius: 5px;
-    padding:  .3rem 1rem;
+    padding: .3rem 1rem;
     width: minmax(135, 50%);
     align-self: center;
 }
@@ -133,6 +133,7 @@ dialog::backdrop {
 #btn-form-cancel {
     background-color: var(--color-high);
 }
+
 body {
     font-family: 'Nunito', sans-serif;
     background-color: var(--color-bg);
@@ -254,10 +255,26 @@ button {
 }
 
 .todo-item {
-    background-color: var(--color-default);
+    /* background-color: var(--color-default); */
     padding: 1rem;
     color: var(--color-block-bg);
 }
+
+ .pr-default {
+     background-color: var(--color-default);
+ }
+
+ .pr-low {
+     background-color: var(--color-low);
+ }
+
+ .pr-mid {
+     background-color: var(--color-mid);
+ }
+
+ .pr-high {
+     background-color: var(--color-high);
+ }
 
 
 .todo-item[open] {
