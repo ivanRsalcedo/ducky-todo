@@ -108,7 +108,7 @@ button {
 }
 
 #btn-add-todo {
-    position: absolute;
+    position: fixed;
     bottom: 5vh;
     left: 50%;
     transform: translateX(-50%);
