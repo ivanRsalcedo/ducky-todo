@@ -93,6 +93,11 @@ button {
     flex-direction: column;
 }
 
+#todo-list {
+    display: flex;
+    flex-direction: column;
+}
+
 #todo-page {
     background-color: var(--color-block-bg);
 }
