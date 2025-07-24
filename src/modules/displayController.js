@@ -1,6 +1,7 @@
 import AppData from "./appData";
 import FormHandler from "./formHandler";
 import ProjectHandler from "./projectHandler";
+import { formatDisplayTodo } from "./dateTimeUtils";
 
 const DisplayController = (() => {
     const navProjects = document.querySelector('#nav-projects');
@@ -66,13 +67,16 @@ const DisplayController = (() => {
         const dateTime = document.createElement('div');
         dateTime.classList.add('todo-date-time');
 
+
+        const formattedDateTime = formatDisplayTodo(todo.date, todo.time);
+
         const date = document.createElement('p');
         date.classList.add('todo-date');
-        date.textContent = todo.date;
+        date.textContent = formattedDateTime[0];
 
         const time = document.createElement('p');
         time.classList.add('todo-time');
-        time.textContent = todo.time;
+        time.textContent = formattedDateTime[1];
 
         dateTime.append(date, time);
         summary.append(checkbox, title, dateTime);
