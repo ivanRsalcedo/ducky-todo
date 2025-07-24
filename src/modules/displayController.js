@@ -29,9 +29,9 @@ const DisplayController = (() => {
 
             const newTodo = FormHandler.parseSubmittedTodo();
             ProjectHandler.getActiveProject().addTodo(newTodo);
-            
+
             update();
-        
+
             form.reset();
             modal.close();
         });
@@ -98,6 +98,12 @@ const DisplayController = (() => {
         const btnDateInput = document.createElement('input');
         btnDateInput.type = 'datetime-local';
         btnDateInput.classList.add('input-date-time');
+        btnDateInput.addEventListener('change', () => {
+            const split = btnDateInput.value.split('T');
+            todo.date = split[0];
+            todo.time = split[1];
+            update();
+        });
 
         const btnDeleteTodo = document.createElement('button');
         btnDeleteTodo.classList.add('btn-remove-todo');
