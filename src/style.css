@@ -16,6 +16,19 @@ html {
     font-size: 125%;
 }
 
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+input,
+textarea,
+button,
+select {
+    font: inherit;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -140,12 +153,6 @@ dialog::backdrop {
 
 #btn-form-cancel {
     background-color: var(--color-high);
-}
-
-body {
-    font-family: 'Nunito', sans-serif;
-    background-color: var(--color-bg);
-    color: var(--color-text);
 }
 
 button:hover,
@@ -292,7 +299,6 @@ button {
 }
 
 .todo-item summary {
-    font-size: 1.2rem;
     list-style: none;
     display: flex;
     align-items: center;
@@ -300,7 +306,13 @@ button {
 }
 
 .todo-title {
+    font-size: 1.2rem;
     font-weight: 700;
+    background: none;
+    border: none;
+    color: var(--color-block-bg);
+    text-overflow: ellipsis;
+    width: 97%;
 }
 
 .todo-date-time {

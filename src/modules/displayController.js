@@ -63,9 +63,43 @@ const DisplayController = (() => {
         checkbox.classList.add('btn-checkbox');
         checkbox.innerHTML = '<i class="fa-regular fa-square"></i>';
 
-        const title = document.createElement('p');
+        const title = document.createElement('input');
+        title.type = 'text';
         title.classList.add('todo-title');
-        title.textContent = todo.name;
+        title.readOnly = true;
+        title.value = todo.name;
+
+        title.addEventListener('click', () => {
+            if (details.open)
+                title.readOnly = false;
+            else
+                details.open = true;
+        });
+
+        title.addEventListener('keydown', (e) => {
+            if (e.key === ' ' && details.open) {
+                e.preventDefault();
+                const { selectionStart, selectionEnd, value } = e.target;
+                e.target.value = value.slice(0, selectionStart) + ' ' + value.slice(selectionEnd);
+                e.target.selectionStart = e.target.selectionEnd = selectionStart + 1;
+
+                title.dispatchEvent(new Event('input'));
+            } else if (e.key === 'Enter') {
+                title.blur();
+            }
+        });
+
+        title.addEventListener('input', () => {
+            if (todo.name !== title.value) {
+                todo.name = title.value;
+                save();
+            }
+        });
+
+        details.addEventListener('toggle', () => {
+            if (details.open === false)
+                title.readOnly = true;
+        });
 
         const dateTime = document.createElement('div');
         dateTime.classList.add('todo-date-time');
