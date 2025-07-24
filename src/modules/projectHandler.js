@@ -19,7 +19,7 @@ const ProjectHandler = (() => {
         },
         loadProjects() {
             projects = AppData.loadProjects() || [];
-            activeProject = projects[0];
+            this.setActiveProject(projects[0]);
         },
         getActiveProject() {
             return activeProject;
