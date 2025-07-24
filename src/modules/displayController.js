@@ -1,6 +1,6 @@
+import AppData from "./appData";
+import FormHandler from "./formHandler";
 import ProjectHandler from "./projectHandler";
-import { format } from 'date-fns';
-
 
 const DisplayController = (() => {
     const navProjects = document.querySelector('#nav-projects');
@@ -20,15 +20,32 @@ const DisplayController = (() => {
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-        });
 
-        document.querySelector('#btn-form-add').addEventListener('click', () => {
+            const newTodo = FormHandler.parseSubmittedTodo();
+            ProjectHandler.getActiveProject().addTodo(newTodo);
+            AppData.saveProjects(ProjectHandler.getProjects());
+
+            renderTodoList();
+
             form.reset();
             modal.close();
         });
+
         document.querySelector('#btn-form-cancel').addEventListener('click', () => {
             modal.close();
         });
+    }
+
+
+    function renderTodoList() {
+        todoList.innerHTML = '';
+        const project = ProjectHandler.getActiveProject();
+        if (!project) return;
+
+        const list = project.getList();
+        for (const todo of list) {
+            todoList.appendChild(renderTodo(todo));
+        }
     }
 
     function renderTodo(todo) {
@@ -83,17 +100,6 @@ const DisplayController = (() => {
 
         details.append(summary, expanded);
         return details;
-    }
-
-    function renderTodoList() {
-        todoList.innerHTML = '';
-        const project = ProjectHandler.getActiveProject();
-        if (!project) return;
-
-        const list = project.getList();
-        for (const todo of list) {
-            todoList.appendChild(renderTodo(todo));
-        }
     }
 
     function renderProjects() {
