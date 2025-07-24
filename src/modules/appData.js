@@ -1,5 +1,6 @@
 import Project from "./project";
 import Todo from "./todo";
+import { format, addDays } from "date-fns";
 
 const AppData = (() => {
 
@@ -25,12 +26,14 @@ const AppData = (() => {
         general.addTodo(Todo(
             'Create your first todo!',
             'Change date/time due or delete a todo with the buttons on the right.',
-            '', '', 'mid'
+            '2025-07-23',
+             '',
+             'mid'
         ));
         general.addTodo(Todo(
             'Try clicking a project on the left!',
             'You can switch between projects or add a new one below.',
-            '', '', 'low'
+            '', '04:53', 'low'
         ));
 
         const work = Project('Work', []);
