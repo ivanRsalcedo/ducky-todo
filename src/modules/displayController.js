@@ -91,15 +91,19 @@ const DisplayController = (() => {
         const buttonGroup = document.createElement('div');
         buttonGroup.classList.add('todo-buttons');
 
-        const dateInput = document.createElement('input');
-        dateInput.type = 'datetime-local';
-        dateInput.classList.add('input-date-time');
+        const btnDateInput = document.createElement('input');
+        btnDateInput.type = 'datetime-local';
+        btnDateInput.classList.add('input-date-time');
 
-        const trash = document.createElement('button');
-        trash.classList.add('btn-remove-todo');
-        trash.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+        const btnDeleteTodo = document.createElement('button');
+        btnDeleteTodo.classList.add('btn-remove-todo');
+        btnDeleteTodo.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+        btnDeleteTodo.addEventListener('click', () => {
+            ProjectHandler.getActiveProject().deleteTodo(todo);
+            
+        });
 
-        buttonGroup.append(dateInput, trash);
+        buttonGroup.append(btnDateInput, btnDeleteTodo);
         expanded.append(notes, buttonGroup);
 
         details.append(summary, expanded);
