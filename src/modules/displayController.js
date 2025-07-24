@@ -7,6 +7,11 @@ const DisplayController = (() => {
     const navProjects = document.querySelector('#nav-projects');
     const todoList = document.querySelector('#todo-list');
 
+    function update() {
+        AppData.saveProjects(ProjectHandler.getProjects());
+        renderTodoList();
+    }
+
     function init() {
 
         navProjects.querySelectorAll('button')[0]?.classList.add('active-project');
@@ -24,10 +29,9 @@ const DisplayController = (() => {
 
             const newTodo = FormHandler.parseSubmittedTodo();
             ProjectHandler.getActiveProject().addTodo(newTodo);
-            AppData.saveProjects(ProjectHandler.getProjects());
-
-            renderTodoList();
-
+            
+            update();
+        
             form.reset();
             modal.close();
         });
@@ -100,7 +104,7 @@ const DisplayController = (() => {
         btnDeleteTodo.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
         btnDeleteTodo.addEventListener('click', () => {
             ProjectHandler.getActiveProject().deleteTodo(todo);
-            
+            update();
         });
 
         buttonGroup.append(btnDateInput, btnDeleteTodo);
