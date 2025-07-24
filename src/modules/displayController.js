@@ -92,6 +92,11 @@ const DisplayController = (() => {
         notes.classList.add('todo-notes');
         notes.value = todo.notes;
 
+        notes.addEventListener('input', () => {
+            todo.notes = notes.value;
+            save();
+        });
+
         const buttonGroup = document.createElement('div');
         buttonGroup.classList.add('todo-buttons');
 
