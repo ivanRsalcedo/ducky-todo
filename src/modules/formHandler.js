@@ -10,7 +10,7 @@ const FormHandler = (() => {
             return Todo(
                 form.elements['todo-title'].value,
                 form.elements['todo-notes'].value,
-                form.elements['form-modal-add-todo-date-due'].value === '' ? format(new Date(), 'yyyy-MM-dd') : form.elements['form-modal-add-todo-date-due'].value
+                form.elements['form-modal-add-todo-date-due'].value === '' ? format(new Date(), 'yyyy-MM-dd') : form.elements['form-modal-add-todo-date-due'].value,
                 form.elements['form-modal-add-todo-time-due'].value,
                 form.elements['todo-priority'].value
             );
