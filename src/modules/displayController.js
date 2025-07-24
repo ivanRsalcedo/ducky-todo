@@ -19,7 +19,6 @@ const DisplayController = (() => {
         const form = document.querySelector('#form-modal-add-todo');
 
         document.querySelector('#btn-add-todo').addEventListener('click', () => {
-            const now = new Date();
             modal.showModal();
         });
 
