@@ -7,9 +7,8 @@ const DisplayController = (() => {
     const navProjects = document.querySelector('#nav-projects');
     const todoList = document.querySelector('#todo-list');
 
-    function update() {
+    function save() {
         AppData.saveProjects(ProjectHandler.getProjects());
-        renderTodoList();
     }
 
     function init() {
@@ -30,7 +29,8 @@ const DisplayController = (() => {
             const newTodo = FormHandler.parseSubmittedTodo();
             ProjectHandler.getActiveProject().addTodo(newTodo);
 
-            update();
+            save();
+            renderTodoList();
 
             form.reset();
             modal.close();
@@ -96,13 +96,31 @@ const DisplayController = (() => {
         buttonGroup.classList.add('todo-buttons');
 
         const btnDateInput = document.createElement('input');
-        btnDateInput.type = 'datetime-local';
+        btnDateInput.type = 'date';
+        btnDateInput.value = todo.date || '';
         btnDateInput.classList.add('input-date-time');
+
         btnDateInput.addEventListener('change', () => {
-            const split = btnDateInput.value.split('T');
-            todo.date = split[0];
-            todo.time = split[1];
-            update();
+            todo.date = btnDateInput.value;
+            save();
+
+            const format = formatDisplayTodo(todo.date, todo.time);
+            date.textContent = format[0];
+            time.textContent = format[1];
+        });
+
+        const btnTimeInput = document.createElement('input');
+        btnTimeInput.type = 'time';
+        btnTimeInput.value = todo.time || '';
+        btnTimeInput.classList.add('input-date-time');
+
+        btnTimeInput.addEventListener('change', () => {
+            todo.time = btnTimeInput.value;
+            save();
+
+            const format = formatDisplayTodo(todo.date, todo.time);
+            date.textContent = format[0];
+            time.textContent = format[1];
         });
 
         const btnDeleteTodo = document.createElement('button');
@@ -110,10 +128,11 @@ const DisplayController = (() => {
         btnDeleteTodo.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
         btnDeleteTodo.addEventListener('click', () => {
             ProjectHandler.getActiveProject().deleteTodo(todo);
-            update();
+            save();
+            renderTodoList();
         });
 
-        buttonGroup.append(btnDateInput, btnDeleteTodo);
+        buttonGroup.append(btnDateInput, btnTimeInput, btnDeleteTodo);
         expanded.append(notes, buttonGroup);
 
         details.append(summary, expanded);
