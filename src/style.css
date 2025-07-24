@@ -319,6 +319,7 @@ button {
     font-size: .9rem;
     text-align: right;
     margin-left: auto;
+    min-inline-size: 10ch;
 }
 
 .btn-checkbox {
