@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ducky Todo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;700;900&display=swap" rel="stylesheet">
+<script defer src="main.js"></script></head>
+
+<body>
+    <dialog id="modal-add-todo">
+        <h1>Add Todo</h1>
+        <form id="form-modal-add-todo">
+            <div id="form-modal-add-todo-fields">
+                <input type="text" id="todo-title" placeholder="Title" required autocomplete="off">
+
+            </div>
+            <div id="form-modal-add-todo-due">
+                <h3>Optional</h3>
+                <textarea type="text" id="todo-notes" placeholder="Notes"></textarea>
+                <h5>Due</h5>
+                <input id="form-modal-add-todo-date-due" type="date">
+                <input id="form-modal-add-todo-time-due" type="time">
+                <select id="todo-priority">
+                    <option value="default">Priority</option>
+                    <option value="low">Low</option>
+                    <option value="mid">Mid</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div id="form-modal-buttons">
+                <button id="btn-form-todo-add" type="submit"><i class="fa-solid fa-plus"></i></button>
+                <button id="btn-form-todo-cancel" type="reset"><i class="fa-solid fa-ban"></i></button>
+            </div>
+        </form>
+    </dialog>
+    <dialog id="modal-add-project">
+        <h2>New Project</h2>
+        <form id="form-modal-add-project">
+            <div id="form-modal-add-project-fields">
+                <input type="text" id="project-title" placeholder="Title" required autocomplete="off">
+            </div>
+            <div id="form-modal-buttons">
+                <button id="btn-form-proj-add" type="submit"><i class="fa-solid fa-plus"></i></button>
+                <button id="btn-form-proj-cancel" type="reset"><i class="fa-solid fa-ban"></i></button>
+            </div>
+        </form>
+    </dialog>
+
+    <div class="container">
+        <aside id="sidebar">
+            <h1>Projects</h1>
+            <div id="nav-projects"></div>
+            <button id="btn-add-project"><i class="fa-solid fa-plus"></i></button>
+        </aside>
+        <main id="todo-page">
+
+            <h1 id="header-project">TODO</h1>
+            <div id="todo-list"></div>
+        </main>
+    </div>
+    <button id="btn-add-todo">
+        <i class="fa-solid fa-plus"></i>
+    </button>
+
+</body>
+
+</html>
