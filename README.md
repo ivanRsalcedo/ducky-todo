@@ -1,7 +1,5 @@
-# Webpack Starter Template
+# Ducky Todo
 
-## Usage
-1. Clone this or click **Use this template** on GitHub
-2. Install dependencies:
-```bash
-npm install
+A simple javascript Todo list web application.
+
+![screenshot](screenshot.png)
