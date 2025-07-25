@@ -78,7 +78,7 @@ function renderTodoList() {
     const project = ProjectHandler.getActiveProject();
     if (!project) return;
 
-    const list = project.getList();
+    const list = project.getList().slice().sort((a, b) => a.completed - b.completed);
     for (const todo of list) {
         todoList.appendChild(renderTodo(todo));
     }
@@ -89,11 +89,29 @@ function renderTodo(todo) {
     details.classList.add('todo-item');
     details.classList.add(`pr-${todo.priority}`);
 
+
     const summary = document.createElement('summary');
+    if (todo.completed) {
+        summary.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+    }
 
     const checkbox = document.createElement('button');
     checkbox.classList.add('btn-checkbox');
-    checkbox.innerHTML = '<i class="fa-regular fa-square"></i>';
+
+    checkbox.innerHTML = todo.completed ? '<i class="fa-regular fa-square-check"></i>' : '<i class="fa-regular fa-square"></i>';
+
+    if (todo.completed) {
+        details.classList.add('completed-todo');
+    }
+
+    checkbox.addEventListener('click', () => {
+        todo.completed = !todo.completed;
+        save();
+        renderTodoList();
+    });
 
     const title = document.createElement('input');
     title.type = 'text';
@@ -102,6 +120,8 @@ function renderTodo(todo) {
     title.value = todo.name;
 
     title.addEventListener('click', () => {
+        if (todo.completed) return;
+
         if (details.open)
             title.readOnly = false;
         else
@@ -129,8 +149,11 @@ function renderTodo(todo) {
     });
 
     details.addEventListener('toggle', () => {
-        if (details.open === false)
+        if (todo.completed && details.open) {
+            details.open = false;
+        } else if (!details.open) {
             title.readOnly = true;
+        }
     });
 
     const dateTime = document.createElement('div');

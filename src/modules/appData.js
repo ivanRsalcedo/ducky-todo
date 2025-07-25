@@ -54,7 +54,7 @@ function rebuildProject(rawObject) {
     project.id = rawObject.id;
     rawObject.todoList.forEach(todo => {
         const realTodo = Todo(
-            todo.name, todo.notes, todo.date, todo.time, todo.priority
+            todo.name, todo.notes, todo.date, todo.time, todo.priority, todo.completed
         );
         realTodo.id = todo.id;
         project.addTodo(realTodo);

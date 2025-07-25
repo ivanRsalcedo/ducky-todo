@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 
-const Todo = (name, notes = '', date = '', time = '', priority = 'default') => {
+const Todo = (name, notes = '', date = '', time = '', priority = 'default', completed = false) => {
     if (!date && time)
         date = format(new Date(), 'yyyy-MM-dd');
     return {
@@ -9,6 +9,7 @@ const Todo = (name, notes = '', date = '', time = '', priority = 'default') => {
         date,
         time,
         priority,
+        completed,
         id: crypto.randomUUID()
     }
 };

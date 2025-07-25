@@ -404,3 +404,15 @@ button#btn-add-project,
     gap: 10px;
     margin-top: auto;
 }
+
+.completed-todo {
+    text-decoration: line-through;
+    filter: saturate(35%);
+    font-style: italic;
+}
+
+.completed-todo input,
+.completed-todo p {
+    font-weight: normal;
+    opacity: 50%;
+}
