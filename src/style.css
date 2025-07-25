@@ -158,7 +158,8 @@ dialog::backdrop {
 button:hover,
 ::-webkit-datetime-edit:hover,
 ::-webkit-calendar-picker-indicator:hover,
-.input-date-time:hover {
+.input-date-time:hover,
+#todo-priority:hover {
     transform: scale(105%);
     cursor: pointer;
 }
@@ -240,21 +241,33 @@ button {
     padding: 3rem 3rem 0rem 3rem;
 }
 
+button#btn-add-project {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    width: 25%;
+}
+
+button#btn-add-project,
+#btn-add-todo {
+    border-radius: 100%;
+    background-color: var(--color-green);
+    color: var(--color-block-bg);
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+}
+
 #btn-add-todo {
     position: fixed;
     bottom: 5vh;
     left: 50%;
     transform: translateX(-50%);
-
-    background-color: var(--color-green);
     font-size: 5rem;
-    border-radius: 100%;
     width: 150px;
-    aspect-ratio: 1;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 #btn-add-todo:hover {
