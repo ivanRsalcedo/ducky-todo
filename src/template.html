@@ -30,11 +30,24 @@
                 </select>
             </div>
             <div id="form-modal-buttons">
-                <button id="btn-form-add" type="submit"><i class="fa-solid fa-plus"></i></button>
-                <button id="btn-form-cancel" type="reset"><i class="fa-solid fa-ban"></i></button>
+                <button id="btn-form-todo-add" type="submit"><i class="fa-solid fa-plus"></i></button>
+                <button id="btn-form-todo-cancel" type="reset"><i class="fa-solid fa-ban"></i></button>
             </div>
         </form>
     </dialog>
+    <dialog id="modal-add-project">
+        <h2>New Project</h2>
+        <form id="form-modal-add-project">
+            <div id="form-modal-add-project-fields">
+                <input type="text" id="project-title" placeholder="Title" required autocomplete="off">
+            </div>
+            <div id="form-modal-buttons">
+                <button id="btn-form-proj-add" type="submit"><i class="fa-solid fa-plus"></i></button>
+                <button id="btn-form-proj-cancel" type="reset"><i class="fa-solid fa-ban"></i></button>
+            </div>
+        </form>
+    </dialog>
+
     <div class="container">
         <aside id="sidebar">
             <h1>Projects</h1>

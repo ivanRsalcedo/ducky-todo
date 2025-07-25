@@ -14,15 +14,49 @@ const DisplayController = (() => {
     function init() {
 
         navProjects.querySelectorAll('button')[0]?.classList.add('active-project');
+        initBtnAddProject();
+        initBtnAddTodo();
+    }
 
-        const modal = document.querySelector('#modal-add-todo');
-        const form = document.querySelector('#form-modal-add-todo');
+    function initBtnAddProject() {
+        const modalAddProject = document.querySelector('#modal-add-project');
+        const formAddProject = document.querySelector('#form-modal-add-project');
 
-        document.querySelector('#btn-add-todo').addEventListener('click', () => {
-            modal.showModal();
+
+        document.querySelector('#btn-add-project').addEventListener('click', () => {
+            modalAddProject.showModal();
         });
 
-        form.addEventListener('submit', (e) => {
+        formAddProject.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const newProject = FormHandler.parseSubmittedProject();
+            ProjectHandler.addProject(newProject);
+
+            save();
+            renderProjects();
+            console.log(navProjects.lastElementChild);
+            navProjects.lastElementChild.click();
+
+
+            formAddProject.reset();
+            modalAddProject.close();
+        });
+
+        document.querySelector('#btn-form-proj-cancel').addEventListener('click', () => {
+            modalAddProject.close();
+        });
+    }
+
+    function initBtnAddTodo() {
+        const modalAddTodo = document.querySelector('#modal-add-todo');
+        const formAddTodo = document.querySelector('#form-modal-add-todo');
+
+        document.querySelector('#btn-add-todo').addEventListener('click', () => {
+            modalAddTodo.showModal();
+        });
+
+        formAddTodo.addEventListener('submit', (e) => {
             e.preventDefault();
 
             const newTodo = FormHandler.parseSubmittedTodo();
@@ -31,15 +65,14 @@ const DisplayController = (() => {
             save();
             renderTodoList();
 
-            form.reset();
-            modal.close();
+            formAddTodo.reset();
+            modalAddTodo.close();
         });
 
-        document.querySelector('#btn-form-cancel').addEventListener('click', () => {
-            modal.close();
+        document.querySelector('#btn-form-todo-cancel').addEventListener('click', () => {
+            modalAddTodo.close();
         });
     }
-
 
     function renderTodoList() {
         todoList.innerHTML = '';

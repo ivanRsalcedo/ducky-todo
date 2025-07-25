@@ -1,3 +1,4 @@
+import Project from "./project";
 import Todo from "./todo";
 
 const FormHandler = (() => {
@@ -12,6 +13,10 @@ const FormHandler = (() => {
                 form.elements['form-modal-add-todo-time-due'].value,
                 form.elements['todo-priority'].value
             );
+        },
+        parseSubmittedProject() {
+            const form = document.querySelector('#form-modal-add-project');
+            return Project(form.elements['project-title'].value);
         }
     }
 })();

@@ -5,8 +5,8 @@
     --color-accent-hover: orange;
     --color-block-bg: #fffafa;
     --color-green: #70c16d;
-    --color-blue: #7a9edc;
-    --color-high: #cf4f4f;
+    --color-blue: #4a92ea;
+    --color-high: #d16565;
     --color-mid: #cf984f;
     --color-low: #d1bb58;
     --color-default: #a58559;
@@ -48,7 +48,8 @@ dialog::backdrop {
     backdrop-filter: blur(2px);
 }
 
-#modal-add-todo {
+#modal-add-todo,
+#modal-add-project {
     background-color: var(--color-green);
     color: var(--color-block-bg);
     border: 5px solid var(--color-block-bg);
@@ -58,7 +59,8 @@ dialog::backdrop {
     text-align: center;
 }
 
-#modal-add-todo label {
+#modal-add-todo label,
+#modal-add-project label {
     font-size: 1.2rem;
 }
 
@@ -76,7 +78,9 @@ dialog::backdrop {
 }
 
 #modal-add-todo input[type='text'],
-#modal-add-todo textarea {
+#modal-add-todo textarea,
+#modal-add-project input[type='text'],
+#modal-add-project textarea {
     background: none;
     border: 2px solid var(--color-block-bg);
     border-radius: 10px;
@@ -85,7 +89,8 @@ dialog::backdrop {
     padding: .5rem 1rem;
 }
 
-#modal-add-todo textarea {
+#modal-add-todo textarea,
+#modal-add-project textarea {
     font-size: .9rem;
 }
 
@@ -94,7 +99,9 @@ dialog::backdrop {
 }
 
 #modal-add-todo input[type='text']::placeholder,
-#modal-add-todo textarea::placeholder {
+#modal-add-todo textarea::placeholder,
+#modal-add-project input[type='text']::placeholder,
+#modal-add-project textarea::placeholder {
     color: var(--color-block-bg);
 }
 
@@ -147,11 +154,11 @@ dialog::backdrop {
 }
 
 
-#btn-form-add {
+button[type="submit"] {
     background-color: var(--color-blue);
 }
 
-#btn-form-cancel {
+button[type="reset"] {
     background-color: var(--color-high);
 }
 
@@ -317,6 +324,11 @@ button#btn-add-project,
     align-items: center;
     gap: 10px;
 }
+
+#project-title {
+    margin-bottom: 1rem;
+}
+
 
 .todo-title {
     font-size: 1.2rem;
