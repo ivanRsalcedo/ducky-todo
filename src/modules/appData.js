@@ -1,6 +1,6 @@
 import Project from "./project";
 import Todo from "./todo";
-import { format, addDays } from "date-fns";
+import { format, addDays, addHours, addMinutes } from "date-fns";
 
 const AppData = (() => {
 
@@ -23,24 +23,30 @@ const AppData = (() => {
 
     function createDefaultProject() {
         const general = Project('General', []);
+        const current = new Date();
+
         general.addTodo(Todo(
             'Create your first todo!',
             'Change date/time due or delete a todo with the buttons on the right.',
-            '2025-07-23',
+            format(current, 'yyyy-MM-dd'),
              '',
              'mid'
         ));
         general.addTodo(Todo(
             'Try clicking a project on the left!',
             'You can switch between projects or add a new one below.',
-            '', '04:53', 'low'
+            format(addDays(current, 1), 'yyyy-MM-dd'),
+            format(addHours(addMinutes(current, 60 - current.getMinutes()), 3), 'HH:mm'),
+            'low'
         ));
 
         const work = Project('Work', []);
         work.addTodo(Todo(
             'Help Bob troubleshoot his PC',
             'Bob probably just needs to restart the computer.',
-            '', '', 'high'
+            '',
+            '10:00',
+            'high'
         ));
 
         return [general, work];
